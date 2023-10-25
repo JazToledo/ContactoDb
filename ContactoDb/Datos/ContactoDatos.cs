@@ -114,6 +114,7 @@ namespace ContactoDb.Datos
                     cmd.Parameters.AddWithValue("Telefono", model.Telefono);
                     cmd.Parameters.AddWithValue("Correo", model.Correo);
                     cmd.Parameters.AddWithValue("Clave", model.Clave);
+                    cmd.CommandType= CommandType.StoredProcedure;
                     cmd.ExecuteNonQuery();
                 }
                 //si no ocurre un error la variable respuesta sera true
@@ -128,7 +129,7 @@ namespace ContactoDb.Datos
             return respuesta;
         }
 
-        public bool EliminarContacto(int IdContacto)
+        public bool EliminarContacto(ContactoModel model)
         {
             bool respuesta;
             try
@@ -138,6 +139,7 @@ namespace ContactoDb.Datos
                 {
                     conexion1.Open();
                     SqlCommand cmd = new SqlCommand("sp_Eliminar", conexion1);
+                    cmd.Parameters.AddWithValue("IdContacto", model.IdContacto);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.ExecuteNonQuery();
                 }

@@ -1,18 +1,20 @@
 ﻿@model ContactoDb.Models.ContactoModel;
 @{
-    ViewData["Title"] = "Guardar";
+    ViewData["Title"] = "Editar";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Guardar</h1>
-<div class="card" style="width: 18rem;">
-    <div class="card-header"></div>
-        Crear contacto
-    <div class="card-body">
-        <form asp-action="Guardar" asp-controller="Contacto" method="post">
+
+<div class="card col-8">
+    <div class="card-header">
+        <h1>Editar</h1>
+        </div>
+   <div class="card-body">
+        <form asp-action="Editar" asp-controller="Contacto" method="post">
+            <input type="hidden" asp-for="IdContacto" class="form-control"/>
             <div class="col-md-4 mb-3">
                 <label for="Nombre">Nombre</label>
-                <input type="text" class="form-control"asp-for="Nombre"/>
+                <input type="text" class="form-control" asp-for="Nombre" />
                 <span asp-validation-for="Nombre" class="text-danger"></span>
             </div>
             <div class="col-md-4 mb-3">
@@ -22,19 +24,17 @@
             </div>
             <div class="col-md-4 mb-3">
                 <label for="Correo">Correo</label>
-                <input type="text" class="form-control" asp-for="Correo"/>
+                <input type="text" class="form-control" asp-for="Correo" />
             </div>
             <div class="col-md-4 mb-3">
                 <label for="Clave">Clave</label>
-                <input type="text" class="form-control" asp-for="Clave"/>
+                <input type="text" class="form-control" asp-for="Clave" />
                 <span asp-validation-for="Clave" class="text-danger"></span>
             </div>
             <div class="col-md-4 mb-3">
-            <button type="submit" class="btn btn-primary mb-3">Guardar</button>
-            <a asp-controller="Contacto" asp-action="Listar">Volver a la lista</a>
+                <button type="submit" class="btn btn-warning mb-3">Editar</button>
+                <a asp-controller="Contacto" asp-action="Listar">Volver a la lista</a>
             </div>
         </form>
-        
-    </div>
+   </div>
 </div>
-
